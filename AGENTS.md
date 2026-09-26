@@ -1,0 +1,7 @@
+# Repository guide
+
+`lib/itunes-affiliate-link.rb` builds affiliate URLs using Ruby's URI library; `lib/itunes_affiliate_link/configuration.rb` stores settings; `lib/generators/` installs a Rails initializer. `itunes-affiliate-link.gemspec` explicitly lists packaged files, so update that list when an authorized code change adds a required file.
+
+This checkout has no Gemfile, Rakefile, test suite, lint configuration, or CI. The README's Bundler/Rails commands run in a consuming Rails app. Use `ruby -c lib/itunes-affiliate-link.rb` (or the changed Ruby path) for syntax and `gem build itunes-affiliate-link.gemspec` for local packaging when relevant. Test link construction with synthetic URLs/tokens, including existing query parameters and optional campaign tokens; it should not require an iTunes request. Generator behavior needs a disposable Rails host. No Ruby version is pinned.
+
+Start with `git status --short`, preserve unrelated edits, and carry authorized changes through focused checks and repair without pausing for routine reversible choices. Preserve public module/method names and distinguish local URL formatting from current affiliate-program validity. Do not publish gems, edit a real application's initializer, or expose affiliate/account tokens without task authorization. Prose-only edits need source/link checks and `git diff --check`. Report changed paths, actual check results, and exact missing runtime/host prerequisites while continuing independent work.
